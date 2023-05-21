@@ -26,8 +26,9 @@ REAL(KIND=8) FUNCTION TVIRTUAL(temp, ratmix)
     REAL(KIND=8), INTENT(IN) :: temp, ratmix
 
 ! NCLEND
-
-    TVIRTUAL = temp*(EPS + ratmix)/(EPS*(1.D0 + ratmix))
+    ! qspec = ratmix/(ratmix + 1)
+    TVIRTUAL = temp*(EPS + ratmix)/(1.D0 + (ratmix/(ratmix + 1))) ! for rcape (I think)
+    !TVIRTUAL = temp*(EPS + ratmix)/(EPS*(1.D0 + ratmix))
 
     RETURN
 
